@@ -1,0 +1,41 @@
+{
+  "_comment": "emit-html.mjs 的输出示例。说明各字段含义。",
+
+  "source": "path/to/meaxure/index.html",
+  "outDir": "output/page-name",
+
+  "designSize": [1920, 1080],
+  "artboardSize": [1920, 1080],
+
+  "images": 47,
+  "texts": 83,
+  "shapes": 12,
+  "skipped": 8,
+
+  "referenceSlices": [
+    {
+      "name": "preview-base",
+      "src": "images/preview-base.png",
+      "outName": "preview-base-1.png",
+      "rect": { "x": 0, "y": 0, "w": 1920, "h": 1080 },
+      "z": 0,
+      "_note": "这些是被过滤掉的参考图，不会生成到 HTML 中。用于 QA 对比，不用于实现。"
+    },
+    {
+      "name": "参考截图",
+      "src": "images/参考截图.png",
+      "outName": "slice-2.png",
+      "rect": { "x": 0, "y": 0, "w": 1920, "h": 1080 },
+      "z": 1
+    }
+  ],
+
+  "fileMap": {
+    "_comment": "原始文件名 → slug（安全 ASCII 文件名）映射。保留此文件方便回查源 slice。",
+    "trend-icon.png": "slice-3.png",
+    "背景图.png": "bei-jing-4.png",
+    "bg@2x.png": "bg-5.png",
+    "panel-left-bg.png": "panel-left-bg-6.png",
+    "icon-power@2x.png": "icon-power-7.png"
+  }
+}

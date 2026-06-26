@@ -1,0 +1,11 @@
+{
+  "name": "design-to-vue-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "pngjs": "^7.0.0"
+  },
+  "optionalDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

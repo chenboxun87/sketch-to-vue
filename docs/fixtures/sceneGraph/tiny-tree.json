@@ -1,0 +1,17 @@
+{
+  "board": { "x": 0, "y": 0, "w": 400, "h": 300 },
+  "layers": [
+    { "objectID": "bg", "type": "shape", "name": "BG", "rect": {"x":0,"y":0,"w":400,"h":300},
+      "css": ["background-image: linear-gradient(180deg,#003,#006);"], "fills":[{"type":"gradient"}] },
+    { "objectID": "g1", "type": "group", "name": "柱状图", "rect": {"x":50,"y":50,"w":200,"h":150},
+      "layers": [
+        { "objectID":"b1","type":"shape","name":"矩形","rect":{"x":50,"y":120,"w":20,"h":80},"fills":[{"type":"solid"}],"css":["background:#0af;"] },
+        { "objectID":"b2","type":"shape","name":"矩形","rect":{"x":90,"y":90,"w":20,"h":110},"fills":[{"type":"solid"}],"css":["background:#0af;"] },
+        { "objectID":"b3","type":"shape","name":"矩形","rect":{"x":130,"y":140,"w":20,"h":60},"fills":[{"type":"solid"}],"css":["background:#0af;"] },
+        { "objectID":"b4","type":"shape","name":"矩形","rect":{"x":170,"y":70,"w":20,"h":130},"fills":[{"type":"solid"}],"css":["background:#0af;"] },
+        { "objectID":"b5","type":"shape","name":"矩形","rect":{"x":210,"y":110,"w":20,"h":90},"fills":[{"type":"solid"}],"css":["background:#0af;"] }
+      ] },
+    { "objectID": "t1", "type": "text", "name": "标题", "rect": {"x":50,"y":20,"w":120,"h":24},
+      "content": "趋势分析", "styleName": "大屏文字1" }
+  ]
+}

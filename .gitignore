@@ -1,0 +1,45 @@
+# 依赖
+scripts/node_modules/
+node_modules/
+
+# 本地生成产物（含业务数据，禁止入库）
+*/_int_out/
+**/_int_out/
+**/scene-graph.json
+**/_all_elements.json
+**/_layer_stack.json
+**/_host_layout_hint.json
+**/_host_decision.json
+**/_chart_zones.json
+**/_chart_zones_sg.json
+**/_scene_graph_audit.json
+**/_render_gaps_report.json
+**/_artboard_coverage.json
+**/_artboard_merge_plan.json
+**/_mg_consume_audit.json
+**/consumption-audit.json
+**/slice-fit.suggest.json
+**/kpiOverlays.json
+**/emit-baseline/
+
+# Python 缓存
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+# 编辑器 / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/settings.json
+
+# 本地敏感配置
+.env
+.env.local
+*.token
+
+# npm lock（保留 package-lock.json，忽略 yarn/pnpm）
+yarn.lock
+pnpm-lock.yaml

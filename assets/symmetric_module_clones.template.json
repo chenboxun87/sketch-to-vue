@@ -1,0 +1,27 @@
+{
+  "comment": "Implement 模板：视觉正确参考行 → 目标行。勿跨业务 panel 用 KPI.y+pitch。详见 references/symmetric-kpi-override.md",
+  "panelPitchY": 282,
+  "excludeNativeIds": [
+    "<目标行错误原生层 id，如 矩形备份5 / isometric 矢量 / 路径9 / 同位文案>"
+  ],
+  "specs": [
+    {
+      "id": "target-kpi-from-reference-row",
+      "label": "参考行 slice KPI → 目标行",
+      "dy": 282,
+      "idSuffix": "-kpi-override",
+      "sourceElementIds": [
+        "<参考行 矩形背景2 slice id>",
+        "<参考行 编组40 slice id>",
+        "<参考行 指标率/22/% text id>"
+      ],
+      "zOverrideBySourceId": {
+        "<矩形背景2 id>": 241,
+        "<编组40 id>": 246,
+        "<指标率 id>": 244,
+        "<22 id>": 242,
+        "<% id>": 243
+      }
+    }
+  ]
+}
