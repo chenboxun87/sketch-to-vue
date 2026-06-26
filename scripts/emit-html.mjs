@@ -1,3 +1,5 @@
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // Emit a self-contained static HTML page from layers.json.
 // Reference screenshots/previews are QA-only and must never become runtime layers.
 //

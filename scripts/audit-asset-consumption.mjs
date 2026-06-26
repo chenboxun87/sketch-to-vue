@@ -1,3 +1,5 @@
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // 资产消费自检（确定性，无需手工输入）。
 //
 // 在「人工肉眼挑错之前」对一个 scene-graph + 已部署资产目录做客观体检，

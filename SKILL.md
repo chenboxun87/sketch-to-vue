@@ -1,3 +1,7 @@
+<!--
+  Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+  Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
+-->
 ---
 name: design-to-vue
 description: >-

@@ -1,3 +1,5 @@
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // 从 MeaXure 原生图层树构建类型化场景图：保留父子树 + native 边，节点内嵌全字段。
 const round = (n) => Math.round((n || 0) * 100) / 100
 

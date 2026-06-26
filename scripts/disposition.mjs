@@ -1,3 +1,5 @@
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // 9 级 disposition 判定（spec 4.3）。纯函数，命中第一条即停。chartIndex={members:Set,zones:Set}。
 const NUM_RE = /[0-9]/
 // 「有可渲染样式」——不仅是填充，还包括描边/阴影/渐变。

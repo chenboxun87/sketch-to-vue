@@ -1,31 +1,54 @@
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
 
-Copyright (c) 2026 chenboxun87 (https://github.com/chenboxun87/design-to-vue)
+Copyright (c) 2026 chenboxun87
+Original repository: https://github.com/chenboxun87/design-to-vue
 
-This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike
-4.0 International License.
+This work is licensed under the Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License.
 
 You are free to:
-  Share  — copy and redistribute the material in any medium or format
-  Adapt  — remix, transform, and build upon the material
+  Share — copy and redistribute the material in any medium or format,
+          for any non-commercial purpose.
 
 Under the following terms:
-  Attribution       — You must give appropriate credit to the original author
-                      (chenboxun87), provide a link to this license, and indicate
-                      if changes were made. You may NOT present this work as your
-                      own creation, remove authorship information, or re-publish
-                      it under your own name to attract traffic or gain profit.
-  NonCommercial     — You may not use the material for commercial purposes,
-                      including but not limited to: selling, licensing for a fee,
-                      using in paid services, or any other activity primarily
-                      intended for commercial advantage or monetary compensation.
-  ShareAlike        — If you remix, transform, or build upon the material, you
-                      must distribute your contributions under the same license
-                      as the original.
+
+  Attribution       — You MUST give appropriate credit to the original
+                      author (chenboxun87), provide a link to the original
+                      repository (https://github.com/chenboxun87/design-to-vue),
+                      and indicate this license.
+                      You MAY NOT present this work as your own creation,
+                      remove or obscure the author's name, or re-publish
+                      this work under your own name or organization to
+                      attract traffic, gain followers, or receive any form
+                      of monetary benefit.
+
+  NonCommercial     — You MAY NOT use this work for commercial purposes,
+                      including but not limited to: selling, licensing
+                      for a fee, incorporating into paid products or
+                      services, or using it in any activity primarily
+                      intended for commercial advantage or monetary
+                      compensation.
+
+  NoDerivatives     — If you remix, transform, or build upon this material,
+                      you MAY NOT distribute the modified material publicly.
+                      You may create private adaptations for personal use,
+                      but you MUST NOT publish derivative works anywhere
+                      (including other GitHub repositories, npm, or any
+                      public platform).
 
 No additional restrictions — You may not apply legal terms or technological
 measures that legally restrict others from doing anything the license permits.
 
-Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Notices:
+  You do not have to comply with the license for elements of the material
+  in the public domain or where your use is permitted by an applicable
+  exception or limitation.
 
-THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+  No warranties are given. The license may not give you all of the
+  permissions necessary for your intended use.
+
+Full legal text: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY ARISING FROM USE OF THIS WORK.

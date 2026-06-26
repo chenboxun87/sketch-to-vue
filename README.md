@@ -5,7 +5,7 @@
 **Sketch MeaXure / MasterGo 设计稿 → 像素级 Vue 页面**  
 一套运行在 Claude Code / Cursor 中的 AI Skill，让 AI 把设计工具的导出物转换成真正可运行的 Vue 2 / Vue 3 组件——不猜测、不幻觉、像素对齐。
 
-[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-blue.svg)](LICENSE)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-blue.svg)](LICENSE)
 [![Vue 2 & 3](https://img.shields.io/badge/Vue-2%20%7C%203-42b883?logo=vue.js)](https://vuejs.org/)
 [![Works with Claude](https://img.shields.io/badge/Works%20with-Claude%20Code-5a5aff?logo=anthropic)](https://claude.ai/code)
 [![Works with Cursor](https://img.shields.io/badge/Works%20with-Cursor-000?logo=cursor)](https://cursor.sh/)
@@ -314,10 +314,14 @@ Then in Cursor or Claude Code, mention any of: `MeaXure`, `MasterGo`, `design-to
 
 ## License
 
-本项目采用 [CC BY-NC-SA 4.0](LICENSE) 协议。
+本项目采用 [CC BY-NC-ND 4.0](LICENSE) 协议。
 
-**你可以**：在署名条件下自由使用、修改、分发本 Skill。  
-**你不可以**：将本项目（含衍生作品）用于商业目的；不可去除署名后发布为他人作品；不可复制到自己的 GitHub 仓库当作自己的成果用于引流或变现。
+**你可以**：在署名条件下免费使用本 Skill（个人学习、非商业项目）。  
+**你不可以**：  
+- 将本项目复制或搬运到自己的 GitHub / 任何平台作为自己的成果发布  
+- 去除或修改版权信息后再分发  
+- 用于任何商业目的（含接单、SaaS、付费服务）  
+- 发布修改后的衍生版本（NoDerivatives）
 
 Original author: **chenboxun87** · Hosted at: https://github.com/chenboxun87/design-to-vue
 
