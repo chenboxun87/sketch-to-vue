@@ -1,0 +1,33 @@
+# Test files
+scripts/test-*.mjs
+scripts/chart-features/test-*.mjs
+
+# Dev/internal docs
+docs/
+references/
+
+# Fixtures and temp
+*.fixture.json
+*_tmp_*.json
+test-*.json
+*.mock.json
+
+# Python files
+**/__pycache__/
+*.py
+*.pyc
+
+# Node modules
+node_modules/
+
+# Git
+.git/
+.gitignore
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
