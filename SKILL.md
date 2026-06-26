@@ -99,17 +99,48 @@ description: >-
       └── → C 轨道：MasterGo MCP   → 读 references/mastergo-mcp-track.md
 ```
 
-## 第二步：判断目标框架
+## 第二步：判断目标框架（target）
 
 ```
 检测方式（按优先级）：
-1. 读 package.json → "vue": "^2" 或 "^3"
-2. 看已有页面文件（Options API / setup() + defineComponent）
-3. 看 CLAUDE.md / README 说明
-4. 用户明确说明
+1. 用户明确说明 target（vue2 / vue3 / react / uniapp）
+2. 读 package.json：
+   - "react" 依赖 → react
+   - "@dcloudio/uni-app" / "uni-app" → uniapp
+   - "vue": "^2" → vue2
+   - "vue": "^3" → vue3
+3. 看已有页面文件（Options API / setup() + defineComponent / JSX / .vue with onLoad）
+4. 看 CLAUDE.md / README 说明
+5. 未确定时默认 vue2
 
-Vue 2 → 读 references/vue2-runtime.md（vmd-ui/ls-*/ViewContent/Echarts）
-Vue 3 → 读 references/vue3-runtime.md（字体打包/ScreenStage/ECharts composable）
+target 路由表
+──────────────────────────────────────────────────────────────
+target: vue2    → 读 references/vue2-runtime.md
+                  出码脚本: scripts/gen-vue-from-scene-graph.mjs
+                  输出: Index.vue (Options API, scoped CSS, v-chart)
+
+target: vue3    → 读 references/vue3-runtime.md
+                  出码脚本: scripts/gen-vue-from-scene-graph.mjs --vue3
+                  输出: Index.vue (Composition API, ECharts composable)
+
+target: react   → 读 docs/emit-react-spec.md（设计规范）
+                  出码脚本: scripts/emit-react.mjs
+                  输出: Index.jsx + index.module.css + chartOptions.js
+                  ECharts: useRef + useEffect + dispose() cleanup
+                  资产: import 变量（绝不猜路径字符串）
+
+target: uniapp  → 读 docs/emit-uniapp-spec.md（设计规范）
+                  出码脚本: scripts/emit-uniapp.mjs
+                  输出: index.vue（UniApp 规范）+ chartOptions.js + pages.json.snippet
+                  标签: <view>/<text>/<image>/<l-echart>
+                  单位: mobile → rpx（750rpx 基准）; bigscreen → px + viewport scale
+                  ECharts: lime-echart + onLoad + await ref.init()
+──────────────────────────────────────────────────────────────
+
+CLI 用法（所有 target 统一参数形式）：
+  node scripts/emit-react.mjs  <scene-graph.json> [chart-zones.json] [outDir] [--host fullscreen|basic-layout] [--name PageName]
+  node scripts/emit-uniapp.mjs <scene-graph.json> [chart-zones.json] [outDir] [--host mobile|bigscreen]      [--name PageName]
+  node scripts/gen-vue-from-scene-graph.mjs <scene-graph.json> [chart-zones.json] [outDir] [--host fullscreen|basic-layout]
 ```
 
 ## 第二步半：宿主布局决策（大屏/驾驶舱必做，写任何 Index.vue 前）
