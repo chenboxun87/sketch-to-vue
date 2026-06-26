@@ -1,5 +1,59 @@
 {
+  "name": "sketch-to-vue",
+  "version": "1.0.0",
+  "description": "Convert Sketch MeaXure / MasterGo design exports into pixel-accurate Vue 2/3, React 18, and UniApp components. AI Skill for Claude / Cursor.",
+  "keywords": [
+    "sketch",
+    "meaxure",
+    "mastergo",
+    "vue",
+    "vue2",
+    "vue3",
+    "react",
+    "uniapp",
+    "design-to-code",
+    "d2c",
+    "ai-skill",
+    "code-generator",
+    "figma-alternative",
+    "scene-graph"
+  ],
+  "author": "chenboxun87 <20091234b@sina.cn>",
+  "license": "CC-BY-NC-ND-4.0",
+  "homepage": "https://github.com/chenboxun87/sketch-to-vue#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenboxun87/sketch-to-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenboxun87/sketch-to-vue/issues"
+  },
+  "type": "module",
+  "bin": {
+    "s2v": "bin/s2v.mjs"
+  },
+  "files": [
+    "bin/",
+    "scripts/extract-meaxure.mjs",
+    "scripts/scene-graph.mjs",
+    "scripts/disposition.mjs",
+    "scripts/extract-chart-features.mjs",
+    "scripts/gen-vue-from-scene-graph.mjs",
+    "scripts/emit-react.mjs",
+    "scripts/emit-uniapp.mjs",
+    "scripts/emit-html.mjs",
+    "scripts/audit-asset-consumption.mjs",
+    "scripts/decide-host-layout.mjs",
+    "templates/",
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "pngjs": "^7.0.0"
-  }
+    "node-html-parser": "^6.1.13"
+  },
+  "devDependencies": {}
 }
