@@ -392,6 +392,104 @@ cd scripts && node test-all.mjs   # 全部通过才可提交
 
 ---
 
+
+---
+
+## 同一个设计稿 · 三种框架输出对比
+
+> 以一个 KPI 数字卡片为例，展示 sketch-to-vue 对不同目标框架的输出效果。
+
+### 输入：Scene Graph 片段
+
+```json
+{
+  "id": "kpi-001",
+  "kind": "live-text-static",
+  "name": "今日用电量",
+  "attrs": {
+    "content": "12,345",
+    "fontSize": 36,
+    "fontWeight": "bold",
+    "color": "#FFFFFF",
+    "left": 40, "top": 80, "width": 200, "height": 50
+  }
+}
+```
+
+---
+
+### Vue 2 / Vue 3 输出
+
+```vue
+<template>
+  <div class="kpi-001" style="position:absolute;left:40px;top:80px;width:200px;height:50px;">
+    <span class="kpi-label">今日用电量</span>
+    <span class="kpi-value">12,345</span>
+  </div>
+</template>
+
+<style scoped>
+.kpi-001 { display: flex; flex-direction: column; }
+.kpi-value { font-size: 36px; font-weight: bold; color: #FFFFFF; }
+</style>
+```
+
+---
+
+### React 18 输出（JSX + CSS Modules）
+
+```jsx
+// KpiCard.jsx
+import styles from './KpiCard.module.css'
+
+export default function KpiCard() {
+  return (
+    <div className={styles.kpi001}>
+      <div style={{fontSize:'36px',fontWeight:'bold',color:'#FFFFFF'}}>
+        {"12,345"}
+      </div>
+    </div>
+  )
+}
+```
+
+```css
+/* KpiCard.module.css */
+.kpi001 {
+  position: absolute;
+  left: 40px; top: 80px;
+  width: 200px; height: 50px;
+}
+```
+
+---
+
+### UniApp 输出（H5 + 微信小程序双端）
+
+```vue
+<template>
+  <view class="kpi001">
+    <text class="kpi-value">{{ kpiValue }}</text>
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return { kpiValue: '12,345' }   // TODO: 替换为真实 API 数据
+  }
+}
+</script>
+
+<style>
+.kpi001 { position: absolute; left: 80rpx; top: 160rpx; width: 400rpx; height: 100rpx; }
+.kpi-value { font-size: 72rpx; font-weight: bold; color: #FFFFFF; }
+</style>
+```
+
+> UniApp 自动将 `px` 换算为 `rpx`（750rpx 基准），一份代码跑 H5 / 微信小程序 / App。
+
+---
 ## FAQ
 
 **Q: 不用 MasterGo / 只用 Sketch，可以吗？**  
