@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="900" height="320" font-family="'Segoe UI',Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+    <linearGradient id="trackA" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#238636"/>
+      <stop offset="100%" style="stop-color:#1a6329"/>
+    </linearGradient>
+    <linearGradient id="trackB" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f6feb"/>
+      <stop offset="100%" style="stop-color:#1158c7"/>
+    </linearGradient>
+    <linearGradient id="trackC" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8957e5"/>
+      <stop offset="100%" style="stop-color:#6e40c9"/>
+    </linearGradient>
+    <linearGradient id="engine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e3b341"/>
+      <stop offset="100%" style="stop-color:#b08800"/>
+    </linearGradient>
+    <linearGradient id="out" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#42b883"/>
+      <stop offset="100%" style="stop-color:#2d8a63"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="320" fill="url(#bg)" rx="12"/>
+  <rect width="900" height="320" fill="none" stroke="#30363d" stroke-width="1" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" fill="#e6edf3" font-size="15" font-weight="600">sketch-to-vue � How It Works</text>
+
+  <!-- Track A: Sketch MeaXure -->
+  <rect x="30" y="60" width="180" height="72" rx="8" fill="url(#trackA)" filter="url(#shadow)"/>
+  <text x="120" y="86" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Track A</text>
+  <text x="120" y="102" text-anchor="middle" fill="#acf2bd" font-size="10">Sketch MeaXure</text>
+  <text x="120" y="116" text-anchor="middle" fill="#acf2bd" font-size="9">index.html + assets/</text>
+  <text x="120" y="130" text-anchor="middle" fill="#acf2bd" font-size="9">� HTML ��	</text>
+
+  <!-- Track B: MasterGo Export -->
+  <rect x="30" y="148" width="180" height="72" rx="8" fill="url(#trackB)" filter="url(#shadow)"/>
+  <text x="120" y="174" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Track B</text>
+  <text x="120" y="190" text-anchor="middle" fill="#a8c4f0" font-size="10">MasterGo Export</text>
+  <text x="120" y="204" text-anchor="middle" fill="#a8c4f0" font-size="9">FILE_DATA.json</text>
+  <text x="120" y="218" text-anchor="middle" fill="#a8c4f0" font-size="9">����	</text>
+
+  <!-- Track C: MasterGo MCP -->
+  <rect x="30" y="236" width="180" height="60" rx="8" fill="url(#trackC)" filter="url(#shadow)"/>
+  <text x="120" y="260" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Track C</text>
+  <text x="120" y="276" text-anchor="middle" fill="#d2b4fe" font-size="10">MasterGo MCP</text>
+  <text x="120" y="290" text-anchor="middle" fill="#d2b4fe" font-size="9">(� DSL ����</text>
+
+  <!-- Arrows to engine -->
+  <line x1="210" y1="96" x2="318" y2="155" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="184" x2="318" y2="185" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="210" y1="266" x2="318" y2="215" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Engine Box -->
+  <rect x="325" y="80" width="250" height="180" rx="10" fill="#21262d" stroke="#e3b341" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="325" y="80" width="250" height="32" rx="10" fill="url(#engine)"/>
+  <rect x="325" y="100" width="250" height="12" fill="url(#engine)"/>
+  <text x="450" y="101" text-anchor="middle" fill="#0d1117" font-size="11" font-weight="700">=' AI Processing Engine</text>
+
+  <text x="345" y="132" fill="#e6edf3" font-size="9.5">� extract-all-elements.mjs</text>
+  <text x="345" y="148" fill="#e6edf3" font-size="9.5">� scene-graph.mjs  �  Scene GraphDAG	</text>
+  <text x="345" y="164" fill="#e6edf3" font-size="9.5">� extract-chart-features.mjs  �  ECharts :�</text>
+  <text x="345" y="180" fill="#e6edf3" font-size="9.5">� decide-host-layout.mjs  �  @�V</text>
+  <text x="345" y="196" fill="#e6edf3" font-size="9.5">� audit-asset-consumption.mjs  �  �9��</text>
+  <text x="345" y="212" fill="#e6edf3" font-size="9.5">� gen-vue-from-scene-graph.mjs  �  �</text>
+  <text x="345" y="228" fill="#e6edf3" font-size="9.5">� verify-board-render-plan.mjs  �  ���</text>
+  <text x="345" y="248" fill="#6e7681" font-size="8.5">Claude Code � Cursor � 30+ scripts</text>
+
+  <!-- Arrow to output -->
+  <line x1="575" y1="170" x2="648" y2="170" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Output Box -->
+  <rect x="655" y="90" width="215" height="160" rx="10" fill="url(#out)" filter="url(#shadow)"/>
+  <text x="762" y="116" text-anchor="middle" fill="#fff" font-size="12" font-weight="700"> Vue Output</text>
+  <line x1="670" y1="125" x2="855" y2="125" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <text x="762" y="144" text-anchor="middle" fill="#d1fae5" font-size="10">Vue 2 / Vue 3 Component</text>
+  <text x="762" y="160" text-anchor="middle" fill="#d1fae5" font-size="9.5">� ��P</text>
+  <text x="762" y="176" text-anchor="middle" fill="#d1fae5" font-size="9.5">ECharts �pnњ</text>
+  <text x="762" y="192" text-anchor="middle" fill="#d1fae5" font-size="9.5">'O / ~v1 / Dashboard</text>
+  <text x="762" y="208" text-anchor="middle" fill="#d1fae5" font-size="9.5">z-order ��؟</text>
+  <text x="762" y="224" text-anchor="middle" fill="#d1fae5" font-size="9.5">WS / � / 4q�t</text>
+  <text x="762" y="240" text-anchor="middle" fill="#d1fae5" font-size="9.5">�G�n�'�</text>
+</svg>
