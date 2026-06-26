@@ -16,20 +16,14 @@
       <stop offset="0%" style="stop-color:#8957e5"/>
       <stop offset="100%" style="stop-color:#6e40c9"/>
     </linearGradient>
-    <linearGradient id="engine" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="trackD" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#e3b341"/>
-      <stop offset="100%" style="stop-color:#b08800"/>
+      <stop offset="100%" style="stop-color:#bb8009"/>
     </linearGradient>
-    <linearGradient id="out" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#42b883"/>
-      <stop offset="100%" style="stop-color:#2d8a63"/>
-    </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L8,3 z" fill="#8b949e"/>
-    </marker>
   </defs>
 
   <!-- Background -->
@@ -37,60 +31,100 @@
   <rect width="900" height="320" fill="none" stroke="#30363d" stroke-width="1" rx="12"/>
 
   <!-- Title -->
-  <text x="450" y="36" text-anchor="middle" fill="#e6edf3" font-size="15" font-weight="600">sketch-to-vue � How It Works</text>
+  <text x="450" y="34" text-anchor="middle" fill="#f0f6fc" font-size="16" font-weight="bold">sketch-to-vue  Workflow</text>
+  <line x1="200" y1="44" x2="700" y2="44" stroke="#30363d" stroke-width="1"/>
 
-  <!-- Track A: Sketch MeaXure -->
-  <rect x="30" y="60" width="180" height="72" rx="8" fill="url(#trackA)" filter="url(#shadow)"/>
-  <text x="120" y="86" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Track A</text>
-  <text x="120" y="102" text-anchor="middle" fill="#acf2bd" font-size="10">Sketch MeaXure</text>
-  <text x="120" y="116" text-anchor="middle" fill="#acf2bd" font-size="9">index.html + assets/</text>
-  <text x="120" y="130" text-anchor="middle" fill="#acf2bd" font-size="9">� HTML ��	</text>
+  <!-- ===== INPUT COLUMN ===== -->
+  <text x="110" y="68" text-anchor="middle" fill="#8b949e" font-size="10" font-weight="600" letter-spacing="1">INPUT</text>
 
-  <!-- Track B: MasterGo Export -->
-  <rect x="30" y="148" width="180" height="72" rx="8" fill="url(#trackB)" filter="url(#shadow)"/>
-  <text x="120" y="174" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Track B</text>
-  <text x="120" y="190" text-anchor="middle" fill="#a8c4f0" font-size="10">MasterGo Export</text>
-  <text x="120" y="204" text-anchor="middle" fill="#a8c4f0" font-size="9">FILE_DATA.json</text>
-  <text x="120" y="218" text-anchor="middle" fill="#a8c4f0" font-size="9">����	</text>
+  <!-- Sketch MeaXure box -->
+  <rect x="30" y="76" width="160" height="52" rx="8" fill="#161b22" stroke="#238636" stroke-width="1.5"/>
+  <text x="110" y="97" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">Sketch MeaXure</text>
+  <text x="110" y="112" text-anchor="middle" fill="#8b949e" font-size="9">HTML export + assets</text>
+  <text x="110" y="124" text-anchor="middle" fill="#8b949e" font-size="9">_all_elements.json</text>
 
-  <!-- Track C: MasterGo MCP -->
-  <rect x="30" y="236" width="180" height="60" rx="8" fill="url(#trackC)" filter="url(#shadow)"/>
-  <text x="120" y="260" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Track C</text>
-  <text x="120" y="276" text-anchor="middle" fill="#d2b4fe" font-size="10">MasterGo MCP</text>
-  <text x="120" y="290" text-anchor="middle" fill="#d2b4fe" font-size="9">(� DSL ����</text>
+  <!-- MasterGo Export box -->
+  <rect x="30" y="140" width="160" height="52" rx="8" fill="#161b22" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="110" y="161" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">MasterGo Export</text>
+  <text x="110" y="176" text-anchor="middle" fill="#8b949e" font-size="9">ZIP package</text>
+  <text x="110" y="188" text-anchor="middle" fill="#8b949e" font-size="9">layers + assets</text>
 
-  <!-- Arrows to engine -->
-  <line x1="210" y1="96" x2="318" y2="155" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="210" y1="184" x2="318" y2="185" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <line x1="210" y1="266" x2="318" y2="215" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- MasterGo MCP box -->
+  <rect x="30" y="204" width="160" height="52" rx="8" fill="#161b22" stroke="#8957e5" stroke-width="1.5"/>
+  <text x="110" y="225" text-anchor="middle" fill="#bc8cff" font-size="11" font-weight="bold">MasterGo MCP</text>
+  <text x="110" y="240" text-anchor="middle" fill="#8b949e" font-size="9">Online DSL</text>
+  <text x="110" y="252" text-anchor="middle" fill="#8b949e" font-size="9">real-time layer data</text>
 
-  <!-- Engine Box -->
-  <rect x="325" y="80" width="250" height="180" rx="10" fill="#21262d" stroke="#e3b341" stroke-width="1.5" filter="url(#shadow)"/>
-  <rect x="325" y="80" width="250" height="32" rx="10" fill="url(#engine)"/>
-  <rect x="325" y="100" width="250" height="12" fill="url(#engine)"/>
-  <text x="450" y="101" text-anchor="middle" fill="#0d1117" font-size="11" font-weight="700">=' AI Processing Engine</text>
+  <!-- Arrows input -> engine -->
+  <line x1="190" y1="102" x2="248" y2="130" stroke="#30363d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="190" y1="166" x2="248" y2="155" stroke="#30363d" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="190" y1="230" x2="248" y2="182" stroke="#30363d" stroke-width="1.5" marker-end="url(#arr)"/>
 
-  <text x="345" y="132" fill="#e6edf3" font-size="9.5">� extract-all-elements.mjs</text>
-  <text x="345" y="148" fill="#e6edf3" font-size="9.5">� scene-graph.mjs  �  Scene GraphDAG	</text>
-  <text x="345" y="164" fill="#e6edf3" font-size="9.5">� extract-chart-features.mjs  �  ECharts :�</text>
-  <text x="345" y="180" fill="#e6edf3" font-size="9.5">� decide-host-layout.mjs  �  @�V</text>
-  <text x="345" y="196" fill="#e6edf3" font-size="9.5">� audit-asset-consumption.mjs  �  �9��</text>
-  <text x="345" y="212" fill="#e6edf3" font-size="9.5">� gen-vue-from-scene-graph.mjs  �  �</text>
-  <text x="345" y="228" fill="#e6edf3" font-size="9.5">� verify-board-render-plan.mjs  �  ���</text>
-  <text x="345" y="248" fill="#6e7681" font-size="8.5">Claude Code � Cursor � 30+ scripts</text>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3fb950"/>
+    </marker>
+  </defs>
 
-  <!-- Arrow to output -->
-  <line x1="575" y1="170" x2="648" y2="170" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- ===== ENGINE COLUMN ===== -->
+  <text x="390" y="68" text-anchor="middle" fill="#8b949e" font-size="10" font-weight="600" letter-spacing="1">PROCESSING ENGINE</text>
 
-  <!-- Output Box -->
-  <rect x="655" y="90" width="215" height="160" rx="10" fill="url(#out)" filter="url(#shadow)"/>
-  <text x="762" y="116" text-anchor="middle" fill="#fff" font-size="12" font-weight="700"> Vue Output</text>
-  <line x1="670" y1="125" x2="855" y2="125" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-  <text x="762" y="144" text-anchor="middle" fill="#d1fae5" font-size="10">Vue 2 / Vue 3 Component</text>
-  <text x="762" y="160" text-anchor="middle" fill="#d1fae5" font-size="9.5">� ��P</text>
-  <text x="762" y="176" text-anchor="middle" fill="#d1fae5" font-size="9.5">ECharts �pnњ</text>
-  <text x="762" y="192" text-anchor="middle" fill="#d1fae5" font-size="9.5">'O / ~v1 / Dashboard</text>
-  <text x="762" y="208" text-anchor="middle" fill="#d1fae5" font-size="9.5">z-order ��؟</text>
-  <text x="762" y="224" text-anchor="middle" fill="#d1fae5" font-size="9.5">WS / � / 4q�t</text>
-  <text x="762" y="240" text-anchor="middle" fill="#d1fae5" font-size="9.5">�G�n�'�</text>
+  <rect x="250" y="76" width="280" height="216" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Stage 1 -->
+  <rect x="265" y="88" width="250" height="34" rx="6" fill="url(#trackA)" opacity="0.9"/>
+  <text x="390" y="101" text-anchor="middle" fill="#f0f6fc" font-size="10" font-weight="bold">Stage 1  Extract</text>
+  <text x="390" y="114" text-anchor="middle" fill="#d2f4dc" font-size="8.5">parse HTML / ZIP / MCP  ->  all_elements.json</text>
+
+  <!-- Stage 2 -->
+  <rect x="265" y="130" width="250" height="34" rx="6" fill="#1c2128" stroke="#3fb950" stroke-width="1" opacity="0.9"/>
+  <text x="390" y="143" text-anchor="middle" fill="#f0f6fc" font-size="10" font-weight="bold">Stage 2  Scene Graph  (TSG)</text>
+  <text x="390" y="156" text-anchor="middle" fill="#8b949e" font-size="8.5">type + disposition + chart detection</text>
+
+  <!-- Stage 3 -->
+  <rect x="265" y="172" width="250" height="34" rx="6" fill="url(#trackB)" opacity="0.9"/>
+  <text x="390" y="185" text-anchor="middle" fill="#f0f6fc" font-size="10" font-weight="bold">Stage 3  Layout Decision</text>
+  <text x="390" y="198" text-anchor="middle" fill="#dbeafe" font-size="8.5">layer order  z-index  absolute coords</text>
+
+  <!-- Stage 4 -->
+  <rect x="265" y="214" width="250" height="34" rx="6" fill="url(#trackC)" opacity="0.9"/>
+  <text x="390" y="227" text-anchor="middle" fill="#f0f6fc" font-size="10" font-weight="bold">Stage 4  Vue Emit</text>
+  <text x="390" y="240" text-anchor="middle" fill="#e9d8fd" font-size="8.5">gen-vue-from-scene-graph.mjs</text>
+
+  <!-- Arrow engine -> output -->
+  <line x1="530" y1="165" x2="590" y2="165" stroke="#58a6ff" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ===== OUTPUT COLUMN ===== -->
+  <text x="745" y="68" text-anchor="middle" fill="#8b949e" font-size="10" font-weight="600" letter-spacing="1">OUTPUT</text>
+
+  <rect x="592" y="76" width="275" height="216" rx="10" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="730" y="97" text-anchor="middle" fill="#e3b341" font-size="12" font-weight="bold">Vue Component</text>
+  <text x="730" y="112" text-anchor="middle" fill="#8b949e" font-size="9">Index.vue  + assets</text>
+  <line x1="612" y1="120" x2="852" y2="120" stroke="#21262d" stroke-width="1"/>
+
+  <rect x="610" y="130" width="118" height="26" rx="5" fill="#161b22" stroke="#238636" stroke-width="1"/>
+  <text x="669" y="147" text-anchor="middle" fill="#3fb950" font-size="9">Pixel-Perfect Layout</text>
+
+  <rect x="740" y="130" width="118" height="26" rx="5" fill="#161b22" stroke="#1f6feb" stroke-width="1"/>
+  <text x="799" y="147" text-anchor="middle" fill="#58a6ff" font-size="9">Vue 2 / Vue 3</text>
+
+  <rect x="610" y="164" width="118" height="26" rx="5" fill="#161b22" stroke="#8957e5" stroke-width="1"/>
+  <text x="669" y="181" text-anchor="middle" fill="#bc8cff" font-size="9">ECharts Binding</text>
+
+  <rect x="740" y="164" width="118" height="26" rx="5" fill="#161b22" stroke="#e3b341" stroke-width="1"/>
+  <text x="799" y="181" text-anchor="middle" fill="#e3b341" font-size="9">Asset Audit</text>
+
+  <rect x="610" y="198" width="118" height="26" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="669" y="215" text-anchor="middle" fill="#3fb950" font-size="9">Gradient / Shadow</text>
+
+  <rect x="740" y="198" width="118" height="26" rx="5" fill="#161b22" stroke="#58a6ff" stroke-width="1"/>
+  <text x="799" y="215" text-anchor="middle" fill="#58a6ff" font-size="9">Big-Screen Scale</text>
+
+  <rect x="610" y="232" width="248" height="50" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="734" y="249" text-anchor="middle" fill="#8b949e" font-size="8.5" font-family="monospace">&lt;template&gt; + &lt;script&gt; + &lt;style&gt;</text>
+  <text x="734" y="263" text-anchor="middle" fill="#58a6ff" font-size="8.5" font-family="monospace">No manual CSS guesswork</text>
+  <text x="734" y="277" text-anchor="middle" fill="#3fb950" font-size="8.5" font-family="monospace">All assets resolved deterministically</text>
 </svg>
