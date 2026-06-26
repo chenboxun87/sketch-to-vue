@@ -4,17 +4,20 @@
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-blue.svg)](LICENSE)
 [![Vue 2 & 3](https://img.shields.io/badge/Vue-2%20%7C%203-42b883?logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![React 18](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)](https://react.dev/)
+[![UniApp](https://img.shields.io/badge/UniApp-H5%20%2F%20Mini%20Program-2b9939)](https://uniapp.dcloud.net.cn/)
 [![Works with Claude](https://img.shields.io/badge/Works%20with-Claude%20Code-5a5aff?logo=anthropic&logoColor=white)](https://claude.ai/code)
 [![Works with Cursor](https://img.shields.io/badge/Works%20with-Cursor-000000?logo=cursor&logoColor=white)](https://cursor.sh/)
 [![Node 18+](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![30+ Scripts](https://img.shields.io/badge/Scripts-30%2B-e3b341)](scripts/)
 [![Tests](https://img.shields.io/badge/Tests-Passing-3fb950)](scripts/test-all.mjs)
 
-**将 Sketch MeaXure / MasterGo 设计稿，转换为像素级对齐的 Vue 页面——不猜测、不幻觉、图表可绑数据。**  
-*The only AI Skill that converts design tool exports into truly runnable Vue components.*
+**将 Sketch MeaXure / MasterGo 设计稿，转换为像素级对齐的前端页面——不猜测、不幻觉、图表可绑数据。**  
+*The only AI Skill that converts design tool exports into truly runnable Vue / React / UniApp components.*
 
-> Also supports MasterGo export packages and MasterGo MCP (online DSL).  
-> Specialized for **Dashboard · Cockpit · Big-Screen** pages with ECharts integrations.
+> Supports **Vue 2 · Vue 3 · React 18 · UniApp** — one skill, four framework targets.  
+> MasterGo export packages and MasterGo MCP (online DSL) also supported.  
+> Specialized for **Dashboard · Cockpit · Big-Screen · Mini Program** pages with ECharts integrations.
 
 [**English**](#english-readme) · [**中文说明**](#中文说明完整版) · [安装](#安装) · [快速开始](#快速开始) · [脚本手册](#脚本手册) · [FAQ](#faq)
 
@@ -40,7 +43,7 @@
 
 `sketch-to-vue` 是一套运行在 **Claude Code** 或 **Cursor** 中的 AI Skill（AI 助手技能包），专为解决"前端开发还原设计稿"这个经典难题——尤其是大屏、驾驶舱、数据看板类页面。
 
-你只需要把设计工具的导出物（Sketch MeaXure 标注 HTML，或 MasterGo 导出包）给 AI，AI 会自动调用本 Skill 里的 30+ 个脚本，输出**可直接运行的 Vue 2 / Vue 3 组件**。
+你只需要把设计工具的导出物（Sketch MeaXure 标注 HTML，或 MasterGo 导出包）给 AI，AI 会自动调用本 Skill 里的 30+ 个脚本，输出**可直接运行的组件**——支持 Vue 2 / Vue 3 / React 18 / UniApp 四种目标框架。
 
 ### 解决了什么痛点？
 
@@ -54,6 +57,18 @@
 | 大屏缩放/宿主嵌入踩坑 | 全屏驾驶舱 vs 嵌入侧边栏，逻辑完全不同 | 宿主布局决策脚本 + letterbox/CONTENT_SHIFT 精确公式 |
 | 字体颜色边框丢失 | 标注导出丢弃了部分 CSS 信息 | 全量 CSS 提取 + 渐变边框合成 + 椭圆/阴影自动处理 |
 | AI 自由发挥乱加内容 | LLM 有幻觉倾向 | 4 条铁律 + 消费侧审计门禁，每个元素都有原始数据支撑 |
+
+### 支持哪些输出框架？
+
+| target 参数 | 输出产物 | 适用场景 |
+|---|---|---|
+| `vue2`（默认） | `Index.vue`（Options API）+ scoped CSS | Vue 2 PC 中后台、大屏驾驶舱 |
+| `vue3` | `Index.vue`（Composition API）+ ECharts composable | Vue 3 新项目 |
+| `react` | `Index.jsx` + `index.module.css` + `chartOptions.js` | React 18 PC / C端 |
+| `uniapp` | `index.vue`（UniApp 规范）+ `pages.json.snippet` | H5 / 微信小程序 / App 三端 |
+
+> **告诉 AI 目标框架**：`转成 React`、`生成 UniApp 版本`、`target: uniapp`……  
+> AI 自动路由到对应 emitter，核心提取与场景图阶段完全复用，只有出码层切换。
 
 ### 支持哪些设计工具？
 
