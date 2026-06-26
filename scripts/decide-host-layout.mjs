@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/sketch-to-vue
 // Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 /**
  * Step 0-A0 门禁：由 _host_layout_hint.json + --arch + 可选确认件计算唯一决策。

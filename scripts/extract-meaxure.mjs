@@ -1,4 +1,4 @@
-// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/sketch-to-vue
 // Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // Extract normalized layer data from a Sketch MeaXure HTML export.
 // Usage: node extract-meaxure.mjs <meaxure-index.html> <out-layers.json>

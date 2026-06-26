@@ -1,332 +1,352 @@
 <div align="center">
 
-# design-to-vue
+# sketch-to-vue
 
-**Sketch MeaXure / MasterGo 设计稿 → 像素级 Vue 页面**  
-一套运行在 Claude Code / Cursor 中的 AI Skill，让 AI 把设计工具的导出物转换成真正可运行的 Vue 2 / Vue 3 组件——不猜测、不幻觉、像素对齐。
+### Sketch MeaXure / MasterGo → Pixel-Perfect Vue 2 / Vue 3
+
+**The only AI Skill that converts design tool exports into truly runnable Vue components —  
+no guessing, no hallucination, pixel-aligned.**
+
+> Also supports MasterGo export packages and MasterGo MCP (online DSL).  
+> Best suited for **Dashboard · Cockpit · Big-Screen** pages with complex layering & ECharts.
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-blue.svg)](LICENSE)
-[![Vue 2 & 3](https://img.shields.io/badge/Vue-2%20%7C%203-42b883?logo=vue.js)](https://vuejs.org/)
-[![Works with Claude](https://img.shields.io/badge/Works%20with-Claude%20Code-5a5aff?logo=anthropic)](https://claude.ai/code)
-[![Works with Cursor](https://img.shields.io/badge/Works%20with-Cursor-000?logo=cursor)](https://cursor.sh/)
+[![Vue 2 & 3](https://img.shields.io/badge/Vue-2%20%7C%203-42b883?logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![Works with Claude](https://img.shields.io/badge/Works%20with-Claude%20Code-5a5aff?logo=anthropic&logoColor=white)](https://claude.ai/code)
+[![Works with Cursor](https://img.shields.io/badge/Works%20with-Cursor-000?logo=cursor&logoColor=white)](https://cursor.sh/)
+[![Node 18+](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-[English](#english) · [安装](#安装) · [快速开始](#快速开始) · [三条轨道](#三条输入轨道) · [脚本手册](#脚本手册) · [License](#license)
+[中文说明](#中文说明) · [Install](#install) · [Quick Start](#quick-start) · [3 Input Tracks](#3-input-tracks) · [Script Reference](#script-reference) · [FAQ](#faq) · [License](#license)
 
 </div>
 
 ---
 
-## 这是什么？
+## Why sketch-to-vue?
 
-`design-to-vue` 是一套专门为 **大屏 / 驾驶舱 / Dashboard** 类页面设计的 AI Skill，  
-解决"设计稿转代码"领域最难的一类场景：
+Most design-to-code tools generate static HTML or broken React components.  
+**sketch-to-vue** tackles the hardest class of pages: **data-driven dashboards with 200+ layers, ECharts integrations, and sub-pixel alignment requirements.**
 
-| 普通 D2C 工具的问题 | design-to-vue 的解法 |
+| Pain point | How sketch-to-vue solves it |
 |---|---|
-| 只生成静态 HTML，图表区变成截图 | 识别图表特征 → 生成 ECharts 可数据绑定组件 |
-| 图片路径靠猜，404 一堆 | 从导出源数据确定性解析，无猜测 |
-| 多图层叠压/层级错误 | Scene Graph（有向图）精确还原 z-order |
-| 字体/颜色/边框丢失 | 全量 CSS 提取 + 渐变边框/阴影/椭圆自动合成 |
-| AI 自由发挥产生幻觉内容 | 四项铁律 + 消费侧审计门禁，强制可验证 |
-| 大屏缩放/宿主嵌入踩坑 | 宿主布局决策脚本 + letterbox/CONTENT_SHIFT 公式 |
+| Image paths always 404 | Resolved deterministically from `objectID` + `exportable.path` — zero guessing |
+| Charts become screenshots | Detects bar/line/pie/radar zones → generates ECharts components with bindable mock data |
+| Layer order wrong | Scene Graph (directed acyclic graph) preserves exact z-order across any nesting depth |
+| Font / color / border lost | Full CSS extraction + gradient border synthesis + ellipse auto-detection |
+| AI makes things up | 4 iron rules + consumption-side audit gate — every pixel has a source |
+| Big-screen scaling nightmares | Host layout decision script + letterbox / CONTENT_SHIFT formulas |
 
 ---
 
-## 支持的设计工具
+## Supported Design Tools
 
-| 轨道 | 输入格式 | 典型场景 |
-|------|----------|---------|
-| **A · Sketch MeaXure** | `index.html` + `assets/` | Sketch 标注导出，批量切图 |
-| **B · MasterGo 导出包** | `FILE_DATA.json` + `data/exports/` | MasterGo 离线导出 |
-| **C · MasterGo MCP** | `mastergo.com` 链接 / fileId | 在线实时读取 DSL |
-
----
-
-## 核心能力
-
-- **确定性资产解析**：图片路径来自 `objectID`+`exportable.path`，不靠文件大小/颜色猜测
-- **Scene Graph（有向图）**：父子层级 + 语义边 + disposition 分类，任何嵌套深度的元素都能挖出
-- **ECharts 图表自动识别**：柱图/折线/饼图/雷达区域 → 生成可绑 mock 数据的 ECharts 组件
-- **渲染三件套检测**：图标缺口 / 文字叠影 / 假图表残留，交付前自动扫描
-- **消费侧全量审计**：漏用/错用/多用资产一键检出，给出 `slice-fit` 修复建议
-- **双端同步**：Claude Code (`~/.claude/skills/`) ↔ Cursor (`~/.cursor/skills/`) NTFS Junction
-- **Vue 2 & Vue 3 双支持**：自动检测 `package.json` 框架版本，模板分别适配
+| Track | Input Format | Typical Use |
+|---|---|---|
+| **A · Sketch MeaXure** | `index.html` + `assets/` | Sketch annotation export |
+| **B · MasterGo Export Package** | `FILE_DATA.json` + `data/exports/` | MasterGo offline export |
+| **C · MasterGo MCP** | `mastergo.com` link / fileId | Online real-time DSL |
 
 ---
 
-## 安装
+## Core Features
 
-> **前置要求**：Node.js 18+，Python 3.9+（仅 C 轨道），Claude Code 或 Cursor
+- **Deterministic asset resolution** — image paths from `objectID`+`exportable.path`, never from file size or color heuristics
+- **Scene Graph (DAG)** — parent-child hierarchy + semantic edges + disposition classification; no element hidden at any depth
+- **ECharts auto-detection** — bar / line / pie / radar regions → bindable ECharts components
+- **Render triplet detection** — icon gaps / text overlaps / ghost charts scanned before delivery
+- **Full consumption audit** — missing / wrong / duplicate assets detected in one command, with `slice-fit` fix suggestions
+- **Dual sync** — Claude Code (`~/.claude/skills/`) ↔ Cursor (`~/.cursor/skills/`) via NTFS Junction
+- **Vue 2 & Vue 3** — auto-detects `package.json` version, separate template sets
 
-### 方式一：Clone 到全局 Skill 目录（推荐）
+---
+
+## Install
+
+> **Requirements**: Node.js 18+, Python 3.9+ (C-track only), Claude Code or Cursor
 
 ```bash
-# Claude Code
-git clone https://github.com/chenboxun87/design-to-vue.git ~/.claude/skills/design-to-vue
+# Clone to global skill directory
+git clone https://github.com/chenboxun87/sketch-to-vue.git ~/.claude/skills/sketch-to-vue
 
-# Cursor（创建 Junction 指向同一目录，Windows）
+# Cursor (Windows — create Junction pointing to the same directory)
 cd ~/.cursor/skills
-New-Item -ItemType Junction -Name design-to-vue -Target "$env:USERPROFILE\.claude\skills\design-to-vue"
+New-Item -ItemType Junction -Name sketch-to-vue -Target "$env:USERPROFILE\.claude\skills\sketch-to-vue"
 
-# 安装脚本依赖
-cd ~/.claude/skills/design-to-vue/scripts
-npm install
+# Install script dependencies
+cd ~/.claude/skills/sketch-to-vue/scripts && npm install
 ```
 
-### 方式二：自定义路径
-
+**Custom path:**
 ```bash
-git clone https://github.com/chenboxun87/design-to-vue.git /path/to/skill
-export DESIGN_TO_VUE_SKILL_ROOT=/path/to/skill
+git clone https://github.com/chenboxun87/sketch-to-vue.git /any/path
+export DESIGN_TO_VUE_SKILL_ROOT=/any/path
 ```
 
-> 详细安装与同步说明 → [`sync/INSTALL.md`](sync/INSTALL.md)
+> Full install & sync guide → [`sync/INSTALL.md`](sync/INSTALL.md)
 
 ---
 
-## 快速开始
+## Quick Start
 
-### Cursor 中使用
+### In Cursor
 
-1. 打开 Cursor → 新建 Agent 对话
-2. 输入触发词：`切图`、`MeaXure`、`MasterGo`、`大屏还原`、`驾驶舱`、`design-to-vue`
-3. AI 自动加载 Skill，按提示填写「项目变量映射表」
+1. Open Cursor → New Agent chat
+2. Type any trigger word: `MeaXure`, `Sketch`, `MasterGo`, `big-screen restore`, `cockpit`, `sketch-to-vue`
+3. The AI loads the Skill automatically — follow the "Project Variable Mapping Table" prompt
 
-### Claude Code 中使用
+### In Claude Code
 
 ```bash
-# 在项目根目录
-/use-skill design-to-vue
+# In your project root
+/use-skill sketch-to-vue
 
-# 或在对话中直接描述需求
-# 示例："把 D:/docs/myDesign 目录里的 MeaXure 导出物转成 Vue3 大屏页面"
+# Or describe your need directly:
+# "Convert the MeaXure export at D:/designs/myDashboard into a Vue 3 full-screen page"
 ```
 
 ---
 
-## 三条输入轨道
+## 3 Input Tracks
 
-### A 轨道：Sketch MeaXure
+<details>
+<summary><b>Track A · Sketch MeaXure (most common)</b></summary>
 
+**Expected export structure:**
 ```
 your-design/
-├── index.html          ← 含 "let data = {" 的标注数据
-├── assets/             ← 切图 PNG/SVG
-├── links/              ← （可选）多画板链接
-└── preview/            ← （可选）预览图
+├── index.html     ← annotation data (contains "let data = {")
+├── assets/        ← slice PNGs / SVGs
+├── links/         ← (optional) multi-artboard links
+└── preview/       ← (optional) preview images
 ```
 
+**Steps:**
 ```bash
-# Step 1：提取所有元素 + 场景图
-node ~/.claude/skills/design-to-vue/scripts/extract-all-elements.mjs \
+# 1. Extract all elements + scene graph
+node ~/.claude/skills/sketch-to-vue/scripts/extract-all-elements.mjs \
   index.html assets/ ./out
 
-# Step 2：宿主布局决策
-node ~/.claude/skills/design-to-vue/scripts/decide-host-layout.mjs ./out \
+# 2. Host layout decision (required before writing any Index.vue)
+node ~/.claude/skills/sketch-to-vue/scripts/decide-host-layout.mjs ./out \
   --arch layerStack
 
-# Step 3：告诉 AI "请基于 ./out 目录生成 Vue 组件"
+# 3. Tell AI: "Generate Vue component based on ./out directory"
 ```
+</details>
 
-### B 轨道：MasterGo 导出包
+<details>
+<summary><b>Track B · MasterGo Export Package</b></summary>
 
 ```bash
-node ~/.claude/skills/design-to-vue/scripts/extract-mastergo-all.mjs \
-  --dir "./export" --design-root "./" --frame "主画板" --out "./pilot/data"
+node ~/.claude/skills/sketch-to-vue/scripts/extract-mastergo-all.mjs \
+  --dir "./export" --design-root "./" --frame "MainFrame" --out "./pilot/data"
 ```
+</details>
 
-### C 轨道：MasterGo MCP（在线）
+<details>
+<summary><b>Track C · MasterGo MCP (online)</b></summary>
 
 ```bash
 export MASTERGO_TOKEN=your_token_here
-python ~/.claude/skills/design-to-vue/scripts/mastergo_get_dsl.py \
+python ~/.claude/skills/sketch-to-vue/scripts/mastergo_get_dsl.py \
   --file-id "abc123" --layer-id "xyz456"
 ```
+</details>
 
 ---
 
-## 脚本手册
+## Script Reference
 
 <details>
-<summary><b>A 轨道（Sketch MeaXure）— 展开查看全部命令</b></summary>
+<summary><b>Track A — Full Command List</b></summary>
 
 ```bash
-# 数据提取
+# Data extraction
 node scripts/extract-meaxure.mjs          index.html layers.json
 node scripts/extract-all-elements.mjs     index.html assetsDir outDir
-node scripts/extract-meaxure-data.py      index.html [artboardIndex]
+python scripts/extract-meaxure-data.py    index.html [artboardIndex]
 
-# 多画板
+# Multi-artboard
 node scripts/merge-artboards.mjs          <dataDir>
 node scripts/measure-artboard-coverage.mjs <dataDir> [W] [H]
 node scripts/detect-artboard-merge.mjs    <dataDir>
 
-# 图表识别
+# Chart detection
 node scripts/extract-chart-features.mjs  <dataDir> <panels.json>
 
-# 场景图
+# Scene graph
 node scripts/audit-scene-graph.mjs       <outDir>/scene-graph.json
 node scripts/gen-vue-from-scene-graph.mjs <outDir>/scene-graph.json <chartZones> <outDir>
 
-# 资产审计（交付前必跑）
-node scripts/audit-asset-consumption.mjs --scene <outDir>/scene-graph.json --assets <assetsDir>
+# Asset audit (run before manual review)
+node scripts/audit-asset-consumption.mjs \
+  --scene <outDir>/scene-graph.json --assets <assetsDir>
 
-# 渲染计划门禁
+# Render plan gate
 node scripts/verify-board-render-plan.mjs <outDir>
 
-# KPI 活体覆盖层
-node scripts/gen-kpi-overlays.mjs  --elements <outDir>/_all_elements.json \
+# KPI live overlay
+node scripts/gen-kpi-overlays.mjs \
+  --elements <outDir>/_all_elements.json \
   --board board@2x.png --out kpiOverlays.json
 
-# 静态 HTML 基线
+# Static HTML baseline
 node scripts/emit-html.mjs  layers.json  assetsDir  outDir
 
-# 锚区计算
-node scripts/meaxure-anchor-regions.mjs  --html index.html \
-  --rules anchorMeasureRules.json  --out anchorRegions.json
+# Anchor region calculation
+node scripts/meaxure-anchor-regions.mjs \
+  --html index.html --rules anchorMeasureRules.json --out anchorRegions.json
 
-# 字体审计
+# Font audit
 node scripts/audit-project-fonts.mjs  <outDir>
 
-# 对称 KPI 漏导检测
+# Symmetric KPI gap detection
 node scripts/detect-symmetric-module-gaps.mjs <outDir>/_all_elements.json
 ```
 </details>
 
 <details>
-<summary><b>B 轨道（MasterGo 导出包）— 展开查看全部命令</b></summary>
+<summary><b>Track B — Full Command List</b></summary>
 
 ```bash
-# 全量提取
-node scripts/extract-mastergo-all.mjs  --dir "<导出>" --design-root "./" \
-  --frame "<帧名>" --out "<pilot>/data"
+node scripts/extract-mastergo-all.mjs \
+  --dir "<export>" --design-root "./" --frame "<frame>" --out "<pilot>/data"
 
-# 轻量 CSS 提取（支持多帧）
-node scripts/extract-mastergo-css.mjs  --dir "<导出>" --frame "<帧名>" [--vue] [--out file.json]
+node scripts/extract-mastergo-css.mjs \
+  --dir "<export>" --frame "<frame>" [--vue] [--out file.json]
 
-# 静态 emit 基线
-node scripts/emit-mastergo-html.mjs  "<pilot>/data" "<导出>/data/exports" "<pilot>/emit-baseline"
+node scripts/emit-mastergo-html.mjs \
+  "<pilot>/data" "<export>/data/exports" "<pilot>/emit-baseline"
 
-# G9 闸门验证
 node scripts/verify-mg-g9.mjs  "<pilot>/emit-baseline"  "<pilot>/data"
 ```
 </details>
 
 <details>
-<summary><b>C 轨道（MasterGo MCP）— 展开查看全部命令</b></summary>
+<summary><b>Track C — Full Command List</b></summary>
 
 ```bash
 python scripts/mastergo_analyze.py    "https://mastergo.com/goto/xxx"
 python scripts/mastergo_get_dsl.py    --file-id "<id>" --layer-id "<id>"
 python scripts/mastergo_fetch_docs.py --from-dsl
-
-node   scripts/fetch-mg-dsl.mjs  --file-id "<id>" --layer-id "<id>" --out path.json
+node   scripts/fetch-mg-dsl.mjs       --file-id "<id>" --layer-id "<id>" --out path.json
 ```
 </details>
 
 <details>
-<summary><b>回归测试</b></summary>
+<summary><b>Regression Tests</b></summary>
 
 ```bash
-cd scripts
-node test-all.mjs    # 全量回归（~30 秒，全 Pass 才可提交）
+cd scripts && node test-all.mjs   # ~30s, all must pass before committing
 ```
 </details>
 
 ---
 
-## 目录结构
+## Directory Structure
 
 ```
-design-to-vue/
-├── SKILL.md                    ← AI 主入口（Cursor/Claude Code 自动加载）
-├── SECURITY.md                 ← 安全说明（网络边界 / token 处理）
-├── scripts/                    ← 30+ 提取 / 审计 / 生成脚本
-│   ├── extract-all-elements.mjs
-│   ├── extract-chart-features.mjs
-│   ├── audit-asset-consumption.mjs
-│   ├── gen-vue-from-scene-graph.mjs
-│   └── test-all.mjs            ← 全量回归入口
-├── references/                 ← 分阶段规则文档（24 份，约 8k 行）
-│   ├── reading-guide.md        ← 阅读导航（每阶段必读文件索引）
-│   ├── hard-won-rules.md       ← 踩坑规则（55+ 条，大屏必读）
-│   ├── meaxure-track.md        ← A 轨道完整流程
-│   ├── mastergo-export-track.md
+sketch-to-vue/
+├── SKILL.md                    ← AI entry point (auto-loaded by Cursor/Claude Code)
+├── SECURITY.md                 ← Security policy (network boundaries / token handling)
+├── scripts/                    ← 30+ extraction / audit / generation scripts
+│   ├── extract-all-elements.mjs   ← Full MeaXure element extraction
+│   ├── extract-chart-features.mjs ← ECharts zone detection
+│   ├── audit-asset-consumption.mjs← Missing/wrong/duplicate asset audit
+│   ├── gen-vue-from-scene-graph.mjs← Vue codegen from scene graph
+│   └── test-all.mjs               ← Full regression suite
+├── references/                 ← 24 stage-based rule documents (~8k lines)
+│   ├── reading-guide.md           ← Navigation guide (stage → file → line)
+│   ├── hard-won-rules.md          ← 55+ battle-tested rules (must-read for big screens)
+│   ├── meaxure-track.md           ← Track A full workflow
 │   └── ...
-├── templates/                  ← Vue / ECharts 可复用模板
+├── templates/                  ← Vue / ECharts reusable templates
 │   ├── vue/
 │   ├── echarts/
-│   └── shared/
-├── assets/                     ← 可复制 JSON 配置模板
+│   └── shared/                    ← boardRender, textStyle, vectorStyle, colorParse
+├── assets/                     ← Copyable JSON config templates
 ├── docs/
-│   ├── fixtures/               ← 中性化回归测试夹具
-│   ├── plans/                  ← 内部开发记录（可选阅读）
-│   └── specs/                  ← 内部设计规格（可选阅读）
-└── sync/                       ← 双端同步脚本
+│   ├── fixtures/               ← Neutralized regression fixtures
+│   └── specs/ plans/           ← Internal development records
+└── sync/                       ← Dual-sync scripts (Claude ↔ Cursor)
     ├── INSTALL.md
-    ├── sync-to-cursor.ps1
-    └── verify-sync.ps1
+    └── sync-to-cursor.ps1 / verify-sync.ps1
 ```
 
 ---
 
-## 为什么不用现有 D2C 工具？
+## FAQ
 
-| 工具 | 缺点 |
-|------|------|
-| Figma Dev Mode / MasterGo 导出 | 只生成静态 CSS，无法绑数据，图表变图片 |
-| Locofy / Anima | 针对普通网页，无法处理大屏层叠/z-order/ECharts |
-| GPT-4V / Claude Vision | 视觉猜测，字体/颜色/尺寸误差大，图片路径全猜 |
-| 手写 | 大屏页面 200+ 图层，手写一周起步 |
+**Q: Does it work without a MasterGo account?**  
+A: Tracks A and B work completely offline from exported files. Track C requires a MasterGo token.
 
-`design-to-vue` 的核心差异：**从设计工具的原始导出数据（JSON/HTML/DSL）直接解析，不依赖截图识别，任何细节都有原始数据作为唯一来源。**
+**Q: Vue 2 or Vue 3?**  
+A: Auto-detected from `package.json`. Separate template sets for each. Explicitly say `vue3` to force Vue 3 mode.
 
----
+**Q: What about Figma?**  
+A: Not yet. Figma exports a different format. A Track D (Figma) is on the roadmap.
 
-## 贡献指南
+**Q: Can I use this in a team / company?**  
+A: Yes, for internal non-commercial use with attribution. See [LICENSE](LICENSE) for details.
 
-欢迎 PR 和 Issue！提交前请：
-
-1. 运行 `cd scripts && node test-all.mjs` 确保全部通过
-2. 新脚本需附带对应的 `test-xxx.mjs` 测试文件
-3. 文档修改需同步更新 `references/reading-guide.md` 的行号引用
+**Q: The AI skips some layers — why?**  
+A: Run `audit-asset-consumption.mjs` first. It reports missing/filtered elements with reasons. Each filtered element has a documented justification (chart zone, ghost shape, dedup, etc.).
 
 ---
 
-## English
+## 中文说明
 
-`design-to-vue` is an AI Skill for Claude Code / Cursor that converts Sketch MeaXure or MasterGo design exports into pixel-perfect Vue 2/3 components.
+`sketch-to-vue` 是专为 **大屏 / 驾驶舱 / Dashboard** 设计的 AI Skill，运行在 Claude Code 或 Cursor 中。
 
-**Key differentiator**: All asset paths, colors, fonts, and positions are resolved deterministically from exported JSON/HTML data — no visual guessing, no hallucination.
+将 Sketch MeaXure 标注产物（`index.html` + `assets/`）或 MasterGo 导出包，转换为像素级对齐的 Vue 2 / Vue 3 组件，图表区域自动生成可绑数据的 ECharts 组件。
 
-**Best suited for**: Dashboard/cockpit/big-screen pages with complex layering, ECharts integrations, and strict pixel-alignment requirements.
+**核心差异**：所有图片路径、颜色、字体、位置均从导出的 JSON/HTML 原始数据中确定性解析——不依赖截图识别，不靠猜测，任何细节都有原始数据作为唯一来源。
 
-### Quick install
+### 快速安装
 
 ```bash
-git clone https://github.com/chenboxun87/design-to-vue.git ~/.claude/skills/design-to-vue
-cd ~/.claude/skills/design-to-vue/scripts && npm install
+git clone https://github.com/chenboxun87/sketch-to-vue.git ~/.claude/skills/sketch-to-vue
+cd ~/.claude/skills/sketch-to-vue/scripts && npm install
 ```
 
-Then in Cursor or Claude Code, mention any of: `MeaXure`, `MasterGo`, `design-to-vue`, `cockpit`, `dashboard restore`.
+在 Cursor 或 Claude Code 中说出：`MeaXure`、`Sketch`、`MasterGo`、`大屏还原`、`驾驶舱`、`sketch-to-vue` 即可触发。
+
+---
+
+## Roadmap
+
+- [ ] Track D: Figma export support
+- [ ] Auto-generate ECharts mock data from design annotations
+- [ ] VS Code extension for one-click conversion
+- [ ] Web UI for non-technical designers
+
+---
+
+## Contributing
+
+PRs and Issues are welcome! Before submitting:
+1. Run `cd scripts && node test-all.mjs` — all tests must pass
+2. New scripts need a corresponding `test-xxx.mjs`
+3. Doc changes must update line references in `references/reading-guide.md`
 
 ---
 
 ## License
 
-本项目采用 [CC BY-NC-ND 4.0](LICENSE) 协议。
+Copyright (c) 2026 **chenboxun87** · [https://github.com/chenboxun87/sketch-to-vue](https://github.com/chenboxun87/sketch-to-vue)
 
-**你可以**：在署名条件下免费使用本 Skill（个人学习、非商业项目）。  
-**你不可以**：  
-- 将本项目复制或搬运到自己的 GitHub / 任何平台作为自己的成果发布  
-- 去除或修改版权信息后再分发  
-- 用于任何商业目的（含接单、SaaS、付费服务）  
-- 发布修改后的衍生版本（NoDerivatives）
+Licensed under [CC BY-NC-ND 4.0](LICENSE).
 
-Original author: **chenboxun87** · Hosted at: https://github.com/chenboxun87/design-to-vue
+✅ Free for personal & non-commercial use with attribution  
+❌ No commercial use · No derivative redistribution · No republishing as your own work
 
 ---
 
 <div align="center">
-如果这个项目对你有帮助，请点 ⭐ Star 支持一下！
+
+**If this project saves you time, please give it a ⭐ Star!**  
+It helps more developers discover this tool.
+
+[⭐ Star on GitHub](https://github.com/chenboxun87/sketch-to-vue) · [🐛 Report Issue](https://github.com/chenboxun87/sketch-to-vue/issues) · [💡 Request Feature](https://github.com/chenboxun87/sketch-to-vue/issues)
+
 </div>

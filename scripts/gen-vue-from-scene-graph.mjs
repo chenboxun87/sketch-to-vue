@@ -1,4 +1,4 @@
-// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/sketch-to-vue
 // Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // 确定性 codegen（spec 4.6）。遍历场景图按 disposition 出 Vue。host: fullscreen|basic-layout。
 import fs from 'node:fs'

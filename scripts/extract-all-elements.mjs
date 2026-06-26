@@ -1,4 +1,4 @@
-// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/design-to-vue
+// Copyright (c) 2026 chenboxun87 · https://github.com/chenboxun87/sketch-to-vue
 // Licensed under CC BY-NC-ND 4.0 · Redistribution and derivative works prohibited.
 // Extract ALL element attributes from a Sketch MeaXure HTML export.
 // Produces: _all_elements.json, _coverage_map.json, _font_manifest.json, _render_plan.json,
